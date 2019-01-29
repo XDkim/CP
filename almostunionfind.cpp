@@ -30,7 +30,7 @@ void merge(int p, int q)
     }
 }
 
-void move(int p) //we need this for operation 2
+void move(int p, int q) //we need this for operation 2
 {
     int set_p = find(id[p]);
 
@@ -41,6 +41,8 @@ void move(int p) //we need this for operation 2
     sum[id[p]] = p;
     cnt[id[p]] = 1;
     parent[id[p]] = id[p];
+
+    merge(p, q);
 }
 
 int main()
@@ -71,8 +73,7 @@ int main()
                 scanf("%d%d", &p, &q);
                 int set_p = find(id[p]), set_q = find(id[q]);
                 if (set_p != set_q){
-                    move(p);
-                    merge(p, q);
+                    move(p, q);
                 }
             }
             else if (op == 3)
